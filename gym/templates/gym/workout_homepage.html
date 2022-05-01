@@ -5,3 +5,55 @@
         <a class="nav-link" href="">Workout Routine</a>
     </li>
 {% endblock workout %}
+
+{% block content %}
+    <section style="margin-top: 20px;" class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">Workout Routine</h1>
+            <p class="lead">This is the Workout Routines page where you can see information about gyms and the types of equipment they have.</p>
+            <hr class="my-4">
+            <form method="POST" action="{% url 'search' %}">
+                {% csrf_token %}
+                <div class="form-control">
+                    <label for="">Choose a Gym</label>
+                    <select name="gym" class="form-control" id="exampleFormControlSelect1">
+                        {% for gym in gyms %}
+                        <option>{{ gym.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label for="">Choose a Muscle</label>
+                    <select name="muscle" class="form-control" id="exampleFormControlSelect1">
+                        {% for muscle in muscles %}
+                        <option>{{ muscle.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                {% if error %}
+                    <small class="form-text" style="color: red !important; margin-bottom: 2% !important;">{{ error }}</small>
+                {% endif %}
+            </form>
+            <br>
+            <h5 style="margin-bottom: 13px;">Exercises</h5>
+            <div class="row">
+                {% if data %}
+                    {% for item in data %}
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ item.photo.url }}" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% endif %}
+                {% if error %}
+                    {{ error }}
+                {% endif %}
+            </div>
+            
+        </div>
+    </section>
+{% endblock content %}

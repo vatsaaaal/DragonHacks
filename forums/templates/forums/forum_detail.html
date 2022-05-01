@@ -1,0 +1,24 @@
+{% extends 'dragonhacks/base.html' %}
+
+{% block forums %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'forums_homepage' %}">Forums</a>
+    </li>
+{% endblock forums %}
+
+{% block content %}
+    <section style="margin-top: 20px;" class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ forum.name }}</h1>
+            <hr class="my-4">
+            {% for channel in channels.all %}
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'channel_detail' channel.id %}"><h5 class="card-title">{{ channel.name }}</h5></a>
+                        <p class="card-text">{{ channel.desc }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'dragonhacks/base.html' %}
+
+{% block forums %}
+    <li class="nav-item active">
+        <a class="nav-link" href="#">Forums</a>
+    </li>
+{% endblock forums %}
+
+{% block content %}
+    <section style="margin-top: 20px;" class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">Forums</h1>
+            <p class="lead">This is the forums page with Mental Health and Physical Health discussion channels. Here, you can interact with other people.</p>
+            <hr class="my-4">
+            <div class="forums">
+                {% for forum in forums %}
+                    <div class="card mb-3">
+                        <img class="card-img-top" src="{{ forum.icon.url }}" alt="{{ forum.name }}" height="">
+                        <div class="card-body">
+                            <a href="{% url 'forum_detail' forum.id %}"><h5 class="card-title">{{ forum.name }}</h5></a>
+                            <p class="card-text">{{ forum.desc }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -27,3 +27,7 @@ def account_signup(request):
         user.save()
         return redirect('login')
     return render(request, 'accounts/signup.html')
+
+def account_logout(request):
+    logout(request)
+    return redirect('login')

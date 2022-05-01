@@ -6,27 +6,6 @@
     </li>
 {% endblock home %}
 
-{% block account %}
-
-    {% if user.is_authenticated %}
-    <li class="nav-item">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Account
-        </a>
-        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" style="color: white !important;">My Account</a>
-            <a class="dropdown-item" href="#" style="color: white !important;">Log Out</a>
-        </div>
-    </li>
-    {% else %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Log In/Sign Up</a>
-    </li>
-    {% endif %}
-
-    
-{% endblock account %}
-
 {% block content %}
 
     <section style="margin-top: 20px;" class="jumbotron">

@@ -1,0 +1,37 @@
+{% extends 'dragonhacks/base.html' %}
+
+{% block forums %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'forums_homepage' %}">Forums</a>
+    </li>
+{% endblock forums %}
+
+{% block content %}
+    <section style="margin-top: 20px;" class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ channel.name }}</h1>
+            <hr class="my-4">
+            <form method="POST" action="{% url 'add_comment' %}">
+                {% csrf_token %}
+                <h6>Add Your Own Comment</h6>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Post!</button>
+                {% if error %}
+                    <small class="form-text" style="color: red !important; margin-bottom: 2% !important;">{{ error }}</small>
+                {% endif %}
+            </form>
+            <hr class="my-4">
+            <h4>Discussion</h4>
+            {% for comment in comments %}
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ comment.user }}</h6>
+                        <p class="card-text">{{ comment.content }}</p>
+                        <small>{{ comment.date_created }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}
