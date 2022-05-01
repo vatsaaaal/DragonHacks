@@ -23,22 +23,53 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    {% block home %}
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
                     </li>
+                    {% endblock home %}
+                    {% block workout %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">Workout Routine</a>
                     </li>
+                    {% endblock workout %}
+                    {% block forums %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">Forums</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
-                    </li>
+                    {% endblock forums %}
+                    {% block account %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Log In
+                        </a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#" style="color: white !important;">Account</a>
+                        </div>
+                      </li>
+                    {% endblock account %}
                 </ul>
             </div>
         </div>
     </nav>
+
+    <section class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">How to Use?</h1>
+            <p class="lead">Our website is easy to understand because Mental Health is important.</p>
+            <hr class="my-4">
+
+        </div>
+    </section>
+
+    <section class="jumbotron text-right">
+        <div class="container">
+            <h1 class="jumbotron-heading">About Us</h1>
+            <p class="lead">We're struggling too, but the forums help.</p>
+            <hr class="my-4">
+            
+        </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
