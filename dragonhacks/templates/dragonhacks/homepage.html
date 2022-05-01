@@ -2,7 +2,53 @@
 
 {% block home %}
     <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{% url 'homepage' %}">Home</a>
     </li>
 {% endblock home %}
 
+{% block account %}
+
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Account
+        </a>
+        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" style="color: white !important;">My Account</a>
+            <a class="dropdown-item" href="#" style="color: white !important;">Log Out</a>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Log In/Sign Up</a>
+    </li>
+    {% endif %}
+
+    
+{% endblock account %}
+
+{% block content %}
+
+    <section style="margin-top: 20px;" class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">How to Use?</h1>
+            <p class="lead">Our website is easy to understand because Mental Health is important.</p>
+            <hr class="my-4">
+            <p>Have you ever searched online for a workout routine that has insanely expensive machinery that your gym doesn’t have? If yes, our website helps you find the perfect workout routine based on your particular gym and your needs. Its main feature is the community page. We have a forums page with Mental Health and Physical Health discussion channels.</p>
+        </div>
+    </section>
+
+    <section class="jumbotron text-right">
+        <div class="container">
+            <h1 class="jumbotron-heading">About Us</h1>
+            <p class="lead">We're struggling too, but the forums help.</p>
+            <hr class="my-4">
+            <p>We are a group of three undergraduate students in our freshman year at Drexel University, Philadelphia. This is a website we created for our first-ever hackathon, DragonHacks 2022.</p>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block js %}
+    <script src="{% static 'js/script.js' %"></script>
+{% endblock js %}

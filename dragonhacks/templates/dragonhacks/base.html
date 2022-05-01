@@ -8,14 +8,16 @@
     {% block bootstrap %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     {% endblock bootstrap %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {% block css %}
+
+    {% endblock css %}
     <title>Work It Out</title>
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+                <img src="{% static 'images/workitout.png' %}" width="30" height="30" alt="">
             </a>
             <a class="navbar-brand" href="#">Work It Out</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,12 +27,12 @@
                 <ul class="navbar-nav ml-auto">
                     {% block home %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{% url 'homepage' %}">Home</a>
                     </li>
                     {% endblock home %}
                     {% block workout %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Workout Routine</a>
+                        <a class="nav-link" href="{% url 'workout_homepage' %}">Workout Routine</a>
                     </li>
                     {% endblock workout %}
                     {% block forums %}
@@ -46,33 +48,23 @@
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#" style="color: white !important;">Account</a>
                         </div>
-                      </li>
+                    </li>
                     {% endblock account %}
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="jumbotron">
-        <div class="container">
-            <h1 class="jumbotron-heading">How to Use?</h1>
-            <p class="lead">Our website is easy to understand because Mental Health is important.</p>
-            <hr class="my-4">
+    {% block content %}
 
-        </div>
-    </section>
+    {% endblock content %}
 
-    <section class="jumbotron text-right">
-        <div class="container">
-            <h1 class="jumbotron-heading">About Us</h1>
-            <p class="lead">We're struggling too, but the forums help.</p>
-            <hr class="my-4">
-            
-        </div>
-    </section>
+    {% block js %}
 
+    {% endblock js %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 </body>
 </html>
